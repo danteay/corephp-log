@@ -1,4 +1,4 @@
-# corephp-easylog
+# corephp-log
 
 An easy log system for php webapps
 
