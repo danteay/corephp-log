@@ -1,14 +1,12 @@
 <?php
 
-namespace Log\Handlers;
+namespace CorePHP\Log\Handlers;
 
 use Psr\Log\InvalidArgumentException;
-use Log\Utils\FormatTrait;
+use CorePHP\Log\Utils\FormatUtil;
 
 class FileHandler extends AbstractHandler
 {
-    use FormatTrait;
-
     /**
      * @var resource file handler
      */
@@ -25,7 +23,6 @@ class FileHandler extends AbstractHandler
     public function __construct($filepath)
     {
         $this->filePath = $filepath;
-        //$this->file = fopen($filepath, 'w');
         $this->formatter = null;
     }
 
@@ -48,7 +45,7 @@ class FileHandler extends AbstractHandler
         }
 
         if (empty($this->formatter)){
-            $tmp = $this->makeExtraFields($extras);
+            $tmp = FormatUtil::makeExtraFields($extras);
             $final = $text . ' ' . $tmp . PHP_EOL;
             file_put_contents($this->filePath, $final, FILE_APPEND);
         } else {
@@ -62,6 +59,5 @@ class FileHandler extends AbstractHandler
 
             file_put_contents($this->filePath, $text_formated, FILE_APPEND);
         }
-
     }
 }

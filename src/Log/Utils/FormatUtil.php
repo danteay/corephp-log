@@ -1,8 +1,8 @@
 <?php
 
-namespace Log\Utils;
+namespace CorePHP\Log\Utils;
 
-trait FormatTrait
+class FormatUtil
 {
     /**
      * Concatenate extra data
@@ -10,7 +10,7 @@ trait FormatTrait
      * @param array $extras Extra data to concatenate
      * @return string
      */
-    public function makeExtraFields($extras)
+    public static function makeExtraFields($extras)
     {
         if (!empty($extras)) {
             $aux = '';
@@ -32,10 +32,8 @@ trait FormatTrait
      * @param array  $data Log data by format keys
      * @return string
      */
-    public function replaceKeys($text, $data)
+    public static function replaceKeys($text, $data)
     {
-        $text = $this->format;
-
         foreach ($data as $key => $value) {
             $text = str_replace($key, $value, $text);
         }

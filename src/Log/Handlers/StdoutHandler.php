@@ -1,10 +1,10 @@
 <?php
 
-namespace Log\Handlers;
+namespace CorePHP\Log\Handlers;
 
 use Psr\Log\InvalidArgumentException;
 use Psr\Log\LogLevel;
-use Log\Utils\Colors;
+use CorePHP\Log\Utils\ColorsUtil;
 
 class StdoutHandler extends AbstractHandler
 {
@@ -32,6 +32,7 @@ class StdoutHandler extends AbstractHandler
      * Extende write function of HandlerInterface
      * 
      * @override
+     * @param 
      * @param callable|string Content of the log
      * @throws InvalidArgumentException
      * @return void
@@ -46,7 +47,7 @@ class StdoutHandler extends AbstractHandler
             throw new InvalidArgumentException('Invalid content to handle');
         }
 
-        if (empty($this->formatter)){
+        if (empty($this->formatter)) {
             fputs($this->stdout, $text);
         } else {
             $text_formated = call_user_func(
@@ -73,7 +74,7 @@ class StdoutHandler extends AbstractHandler
      */
     private function setColorization($text)
     {
-        $colors = new Colors();
+        $colors = new ColorsUtil();
 
         switch ($this->level) {
             case LogLevel::EMERGENCY:

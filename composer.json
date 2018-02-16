@@ -19,15 +19,16 @@
     },
     "autoload": {
         "psr-4": {
-            "Log\\": "src/Log"
+            "CorePHP\\Log\\": "src/Log"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Log\\": "tests/Log"
+            "CorePHP\\Log\\": "tests/Log"
         }
     },
     "scripts": {
-        "test": "phpunit tests"
+        "test": "phpunit tests",
+        "serve": "php -S 0.0.0.0:8080 tests/server.php"
     }
 }

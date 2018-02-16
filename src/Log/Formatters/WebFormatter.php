@@ -1,6 +1,8 @@
 <?php
 
-namespace Log\Formatters;
+namespace CorePHP\Log\Formatters;
+
+use CorePHP\Log\Utils\FormatUtil;
 
 class WebFormatter extends AbstractFormatter
 {
@@ -37,6 +39,16 @@ class WebFormatter extends AbstractFormatter
         }
     }
 
+    /**
+     * Main function to farmat string log
+     * 
+     * @override
+     * @param string $level Log level
+     * @param string $text Log text
+     * @param string $name='' Logger name
+     * @param array  $extras=[] Extra data to log
+     * @return void
+     */
     public function format($level, $text, $name='', $extras=[])
     {
         $bodyLegth = isset($extras['bodyLength']) ? function() use ($extras) {
@@ -65,9 +77,9 @@ class WebFormatter extends AbstractFormatter
             '{bodyLength}' => is_callable($bodyLegth) ? $bodyLegth() : $bodyLegth,
             '{reqTime}'    => is_callable($reqTime) ? $reqTime() : $reqTime,
             '{message}'    => $text,
-            '{extras}'     => $this->makeExtraFields($extras)
+            '{extras}'     => FormatUtil::makeExtraFields($extras)
         ];
 
-        return $this->replaceKeys($this->format, $data) . "\n";
+        return FormatUtil::replaceKeys($this->format, $data) . "\n";
     }
 }

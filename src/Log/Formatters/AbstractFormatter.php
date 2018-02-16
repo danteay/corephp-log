@@ -1,13 +1,9 @@
 <?php 
 
-namespace Log\Formatters;
-
-use Log\Utils\FormatTrait;
+namespace CorePHP\Log\Formatters;
 
 abstract class AbstractFormatter
 {
-    use FormatTrait;
-
     /**
      * @var array keys to replace in log format
      */

@@ -1,8 +1,8 @@
 <?php
 
-namespace Log\Handlers;
+namespace CorePHP\Log\Handlers;
 
-use Log\Formatters\AbstractFormatter;
+use CorePHP\Log\Formatters\AbstractFormatter;
 
 abstract class AbstractHandler
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Log;
+namespace CorePHP\Log;
 
-use Log\Logger;
-use Log\Handlers\StdoutHandler;
+use CorePHP\Log\Logger;
+use CorePHP\Log\Handlers\StdoutHandler;
 
 class LoggerTest extends \PHPUnit_Framework_TestCase
 {

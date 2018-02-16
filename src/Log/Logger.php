@@ -1,23 +1,14 @@
 <?php
 
-namespace Log;
+namespace CorePHP\Log;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
-use Log\Handlers\HandlerInterface;
-use Log\Handlers\AbstractHandler;
+use CorePHP\Log\Handlers\HandlerInterface;
+use CorePHP\Log\Handlers\AbstractHandler;
 
 class Logger implements LoggerInterface
 {
-    const EMERGENCY = LogLevel::EMERGENCY;
-    const ALERT     = LogLevel::ALERT;
-    const CRITICAL  = LogLevel::CRITICAL;
-    const ERROR     = LogLevel::ERROR;
-    const WARNING   = LogLevel::WARNING;
-    const NOTICE    = LogLevel::NOTICE;
-    const INFO      = LogLevel::INFO;
-    const DEBUG     = LogLevel::DEBUG;
-
     /**
      * @var array List of handlers for log information
      */
@@ -84,7 +75,7 @@ class Logger implements LoggerInterface
         }
 
         foreach ($context as $current) {
-            $current->setLevel(self::EMERGENCY);
+            $current->setLevel(LogLevel::EMERGENCY);
             $current->setName($this->getName());
             $current->write($message);
         }
@@ -108,7 +99,7 @@ class Logger implements LoggerInterface
         }
 
         foreach ($context as $current) {
-            $current->setLevel(self::ALERT);
+            $current->setLevel(LogLevel::ALERT);
             $current->setName($this->getName());
             $current->write($message);
         }
@@ -131,7 +122,7 @@ class Logger implements LoggerInterface
         }
 
         foreach ($context as $current) {
-            $current->setLevel(self::CRITICAL);
+            $current->setLevel(LogLevel::CRITICAL);
             $current->setName($this->getName());
             $current->write($message);
         }
@@ -153,7 +144,7 @@ class Logger implements LoggerInterface
         }
 
         foreach ($context as $current) {
-            $current->setLevel(self::ERROR);
+            $current->setLevel(LogLevel::ERROR);
             $current->setName($this->getName());
             $current->write($message);
         }
@@ -177,7 +168,7 @@ class Logger implements LoggerInterface
         }
 
         foreach ($context as $current) {
-            $current->setLevel(self::WARNING);
+            $current->setLevel(LogLevel::WARNING);
             $current->setName($this->getName());
             $current->write($message);
         }
@@ -198,7 +189,7 @@ class Logger implements LoggerInterface
         }
 
         foreach ($context as $current) {
-            $current->setLevel(self::NOTICE);
+            $current->setLevel(LogLevel::NOTICE);
             $current->setName($this->getName());
             $current->write($message);
         }
@@ -222,7 +213,7 @@ class Logger implements LoggerInterface
         }
 
         foreach ($context as $current) {
-            $current->setLevel(self::INFO);
+            $current->setLevel(LogLevel::INFO);
             $current->setName($this->getName());
             $current->write($message);
         }
@@ -244,7 +235,7 @@ class Logger implements LoggerInterface
         }
 
         foreach ($context as $current) {
-            $current->setLevel(self::DEBUG);
+            $current->setLevel(LogLevel::DEBUG);
             $current->setName($this->getName());
             $current->write($message);
         }

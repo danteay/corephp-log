@@ -1,6 +1,8 @@
 <?php
 
-namespace Log\Formatters;
+namespace CorePHP\Log\Formatters;
+
+use CorePHP\Log\Utils\FormatUtil;
 
 class BaseFormatter extends AbstractFormatter
 {
@@ -51,11 +53,11 @@ class BaseFormatter extends AbstractFormatter
             '{date}'       => date('Y-m-d'),
             '{datetime}'   => date('Y-m-d H:i:s'),
             '{message}'    => $text,
-            '{extras}'     => $this->makeExtraFields($extras),
+            '{extras}'     => FormatUtil::makeExtraFields($extras),
             '{level}'      => strtoupper($level),
             '{name}'       => $name
         ];
 
-        return $this->replaceKeys($this->format, $data) . "\n";
+        return FormatUtil::replaceKeys($this->format, $data) . "\n";
     }
 }
