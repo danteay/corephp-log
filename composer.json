@@ -1,0 +1,33 @@
+{
+    "name": "corephp/log",
+    "description": "Easy log system to log information by STDOUT and logfile",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eduardo Aguilar",
+            "email": "dante.aguilar41@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6",
+        "psr/log": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Log\\": "src/Log"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Log\\": "tests/Log"
+        }
+    },
+    "scripts": {
+        "test": "phpunit tests"
+    }
+}
