@@ -16,7 +16,7 @@ class FormatUtil
             $aux = '';
 
             foreach ($extras as $value) {
-                $aux = $aux = '' ? $value : ' ' . $value;
+                $aux .= $aux == '' ? $value : ' ' . $value;
             }
 
             return $aux;

@@ -51,18 +51,6 @@ class WebFormatter extends AbstractFormatter
      */
     public function format($level, $text, $name='', $extras=[])
     {
-        $bodyLegth = isset($extras['bodyLength']) ? function() use ($extras) {
-            $tmp = $extras['bodyLength'];
-            unset($extras['bodyLength']);
-            return $tmp;
-        } : '0';
-
-        $reqTime = isset($extras['reqTime']) ? function() use ($extras){
-            $tmp = $extras['reqTime'];
-            unset($extras['reqTime']);
-            return $tmp;
-        } : '0';
-
         $data = [
             '{epoch}'      => time(),
             '{epochmilli}' => round(microtime(true) * 1000),
@@ -74,11 +62,21 @@ class WebFormatter extends AbstractFormatter
             '{clientIp}'   => $_SERVER['REMOTE_ADDR'],
             '{method}'     => $_SERVER['REQUEST_METHOD'],
             '{path}'       => $_SERVER['REQUEST_URI'],
-            '{bodyLength}' => is_callable($bodyLegth) ? $bodyLegth() : $bodyLegth,
-            '{reqTime}'    => is_callable($reqTime) ? $reqTime() : $reqTime,
-            '{message}'    => $text,
-            '{extras}'     => FormatUtil::makeExtraFields($extras)
+            '{bodyLength}' => '0',
+            '{reqTime}'    => '0',
+            '{message}'    => $text
         ];
+
+        foreach ($data as $key => $value) {
+            $auxkey = str_replace('{', '', str_replace('}', '', $key));
+
+            if (array_key_exists($auxkey, $extras)){
+                $data[$key] = $extras[$auxkey];
+                unset($extras[$auxkey]);
+            }
+        }
+
+        $data['{extras}'] = empty($extras) ? '' : FormatUtil::makeExtraFields($extras);
 
         return FormatUtil::replaceKeys($this->format, $data) . "\n";
     }

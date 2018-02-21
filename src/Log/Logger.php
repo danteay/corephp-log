@@ -70,14 +70,10 @@ class Logger implements LoggerInterface
      */
     public function emergency($message, array $context = array())
     {
-        if (empty($context)) {
-            $context = $this->handlers;
-        }
-
-        foreach ($context as $current) {
+        foreach ($this->handlers as $current) {
             $current->setLevel(LogLevel::EMERGENCY);
             $current->setName($this->getName());
-            $current->write($message);
+            $current->write($message, $context);
         }
     }
 
@@ -94,14 +90,10 @@ class Logger implements LoggerInterface
      */
     public function alert($message, array $context = array())
     {
-        if (empty($context)) {
-            $context = $this->handlers;
-        }
-
-        foreach ($context as $current) {
+        foreach ($this->handlers as $current) {
             $current->setLevel(LogLevel::ALERT);
             $current->setName($this->getName());
-            $current->write($message);
+            $current->write($message, $context);
         }
     }
 
@@ -117,14 +109,10 @@ class Logger implements LoggerInterface
      */
     public function critical($message, array $context = array())
     {
-        if (empty($context)) {
-            $context = $this->handlers;
-        }
-
-        foreach ($context as $current) {
+        foreach ($this->handlers as $current) {
             $current->setLevel(LogLevel::CRITICAL);
             $current->setName($this->getName());
-            $current->write($message);
+            $current->write($message, $context);
         }
     }
 
@@ -139,14 +127,10 @@ class Logger implements LoggerInterface
      */
     public function error($message, array $context = array())
     {
-        if (empty($context)) {
-            $context = $this->handlers;
-        }
-
-        foreach ($context as $current) {
+        foreach ($this->handlers as $current) {
             $current->setLevel(LogLevel::ERROR);
             $current->setName($this->getName());
-            $current->write($message);
+            $current->write($message, $context);
         }
     }
 
@@ -163,14 +147,10 @@ class Logger implements LoggerInterface
      */
     public function warning($message, array $context = array())
     {
-        if (empty($context)) {
-            $context = $this->handlers;
-        }
-
-        foreach ($context as $current) {
+        foreach ($this->handlers as $current) {
             $current->setLevel(LogLevel::WARNING);
             $current->setName($this->getName());
-            $current->write($message);
+            $current->write($message, $context);
         }
     }
 
@@ -184,14 +164,10 @@ class Logger implements LoggerInterface
      */
     public function notice($message, array $context = array())
     {
-        if (empty($context)) {
-            $context = $this->handlers;
-        }
-
-        foreach ($context as $current) {
+        foreach ($this->handlers as $current) {
             $current->setLevel(LogLevel::NOTICE);
             $current->setName($this->getName());
-            $current->write($message);
+            $current->write($message, $context);
         }
     }
 
@@ -208,14 +184,10 @@ class Logger implements LoggerInterface
      */
     public function info($message, array $context = array())
     {
-        if (empty($context)) {
-            $context = $this->handlers;
-        }
-
-        foreach ($context as $current) {
+        foreach ($this->handlers as $current) {
             $current->setLevel(LogLevel::INFO);
             $current->setName($this->getName());
-            $current->write($message);
+            $current->write($message, $context);
         }
     }
 
@@ -230,14 +202,10 @@ class Logger implements LoggerInterface
      */
     public function debug($message, array $context = array())
     {
-        if (empty($context)) {
-            $context = $this->handlers;
-        }
-
-        foreach ($context as $current) {
+        foreach ($this->handlers as $current) {
             $current->setLevel(LogLevel::DEBUG);
             $current->setName($this->getName());
-            $current->write($message);
+            $current->write($message, $context);
         }
     }
 

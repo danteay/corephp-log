@@ -17,7 +17,19 @@ $handler1->setFormatt($formatter);
 
 $logger->addHandler($handler);
 $logger->addHandler($handler1);
-$logger->error('Mensaje random');
+
+$context = [
+    'code' => 403,
+    'reqTime' => '120s',
+    'bodyLength' => 14,
+    'algo',
+    'mas',
+    'en',
+    'el',
+    'contexto'
+];
+
+$logger->error('Mensaje random', $context);
 ?>
 
 <!DOCTYPE html>

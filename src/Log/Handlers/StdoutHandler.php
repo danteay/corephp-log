@@ -5,6 +5,7 @@ namespace CorePHP\Log\Handlers;
 use Psr\Log\InvalidArgumentException;
 use Psr\Log\LogLevel;
 use CorePHP\Log\Utils\ColorsUtil;
+use CorePHP\Log\Utils\FormatUtil;
 
 class StdoutHandler extends AbstractHandler
 {
@@ -48,7 +49,8 @@ class StdoutHandler extends AbstractHandler
         }
 
         if (empty($this->formatter)) {
-            fputs($this->stdout, $text);
+            $tmp = FormatUtil::makeExtraFields($extras);
+            fputs($this->stdout, $text . ' ' . $tmp);
         } else {
             $text_formated = call_user_func(
                 $this->formatter, 
