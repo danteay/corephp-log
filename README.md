@@ -5,10 +5,10 @@ An easy log system for php webapps
 ## Basic use
 
 ```php
-use EasyLog\Logger;
-use EasyLog\Handlers\FileHandler;
-use EasyLog\Formatters\WebFormatter;
-use EasyLog\Handlers\StdoutHandler;
+use CorePHP\Log\Logger;
+use CorePHP\Log\Handlers\FileHandler;
+use CorePHP\Log\Formatters\WebFormatter;
+use CorePHP\Log\Handlers\StdoutHandler;
 
 $logger = new Logger('TEST');
 $formatter = new WebFormatter();
@@ -20,5 +20,6 @@ $handler1->setFormatt($formatter);
 
 $logger->addHandler($handler);
 $logger->addHandler($handler1);
+
 $logger->error('Mensaje random');
 ```
